@@ -1,62 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inplimentation.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 18:29:29 by aatki             #+#    #+#             */
+/*   Updated: 2023/01/18 18:29:43 by aatki            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+int	check(t_pile *l, int j)
+{
+	if (!l)
+		return (0);
+	while (l)
+	{
+		if (l->data >= j - 20 && l->data <= j)
+		{
+			printf("here j=%d data=%d\n", j, l->data);
+			return (1);
+		}
+		l = l->next;
+	}
+	return (0);
+}
+
+void	just(t_pile **l, int j)
+{
+	int		top;
+	t_pile	*b;
+
+	b = NULL;
+	while (check(*l, j))
+	{
+		top = scan_top(*l, j);
+		ft_top(l, &b, top);
+	}
+	affiche(b);
+	printf("after\n");
+}
 
 void	main_function(t_pile **l)
 {
-	t_pile	*lr;
-	int		top;
-	t_pile	*tmp;
-	int		j;
-
-	//t_pile	*chunk1;
-	//int		buttom=0;
-	// t_pile	*chunk2;
-	// t_pile	*chunk3;
-	// t_pile	*chunk4;
-	// t_pile	*chunk5;
-	lr = *l;
-	j = 0;
-	tmp = malloc(sizeof(t_pile) * 20);
-	while (lr)
-	{
-		while (j < 100)
-		{
-			if (j == 20 || j == 40 || j == 60 || j == 80 || j == 100)
-				break ;
-			top = scan_top(*l, j);
-			//buttom = scan_buttom(*l, j);
-			//if (top <= 101 - buttom)
-			/////////////////////////////ft_top(l, &tmp, top);
-			// else
-			// 	ft_buttom(l, &tmp, buttom);
-			printf("%d    %d\n ", j, j % 20);
-			j++;
-		}
-		j = 0;
-		// chunk1 = tmp;
-		// free(tmp);
-		//tmp = chunk2;
-		// if (j == 40)
-		// {
-		// 	chunk2 = tmp;
-		// 	free(tmp);
-		// 	tmp = chunk3;
-		// }
-		// if (j == 60)
-		// {
-		// 	chunk3 = tmp;
-		// 	free(tmp);
-		// 	tmp = chunk4;
-		// }
-		// if (j == 80)
-		// {
-		// 	chunk4 = tmp;
-		// 	free(tmp);
-		// 	tmp = chunk5;
-		// }
-	}
-	lr = lr->next;
-	// chunk5 = tmp;
-	// free(tmp);
+	just(l, 20);
+	just(l, 40);
+	just(l, 80);
+	just(l, 100);
 }
 
 int	scan_top(t_pile *l, int j)
@@ -68,30 +60,12 @@ int	scan_top(t_pile *l, int j)
 		return (0);
 	while (l)
 	{
-		if (l->data >= j && l->data <= j + 20)
-		{
+		if (l->data >= j - 19 && l->data <= j)
 			return (i);
-		}
 		l = l->next;
 		i++;
 	}
 	return (i);
-}
-
-void	ft_top(t_pile **l, t_pile **chank, int i)
-{
-	if (!*l)
-		return ;
-	if (!chank)
-		return ;
-	while (i)
-	{
-		rot(l);
-		putstr("ra\n", 1);
-		i--;
-	}
-	push(l, chank);
-	putstr("pa", 1);
 }
 
 int	scan_buttom(t_pile *l, int j)
@@ -112,20 +86,4 @@ int	scan_buttom(t_pile *l, int j)
 		i++;
 	}
 	return (ret);
-}
-
-void	ft_buttom(t_pile **l, t_pile **chank, int i)
-{
-	if (!*l)
-		return ;
-	if (!chank)
-		return ;
-	while (i)
-	{
-		rot(l);
-		putstr("rra\n", 1);
-		i--;
-	}
-	push(l, chank);
-	putstr("pa", 1);
 }

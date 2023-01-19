@@ -6,33 +6,42 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/07 13:42:37 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/19 17:54:39 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_input(char **f)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && i < n - 1 && s1[i] == s2[i])
+		i++;
+	if ((unsigned char)s1[i] < (unsigned char)s2[i])
+		return (-1);
+	else if ((unsigned char)s1[i] > (unsigned char)s2[i])
+		return (1);
+	else
+		return (0);
+}
+
+void	check_input(char **f)
 {
 	int	i;
-	int	j;
 
 	i = 1;
-	j = 0;
 	while (f[i])
 	{
-		if (f[i][j] == '-' || f[i][j] == '+')
-			j++;
-		while (f[i][j])
-		{
-			if (!(f[i][j] >= '0' && f[i][j] <= '9'))
-				ft_error("there is an other character");
-			j++;
-		}
-		j = 0;
+		if (!ft_strncmp(f[i], "2147483647", 10) || !ft_strncmp(f[i],
+				"-2147483648", 11))
+			exit(0);
+		ft_atoi(f[i]);
 		i++;
 	}
-	return (i - 1);
 }
 
 int	ft_max(unsigned long long a, int sign)
@@ -62,10 +71,14 @@ int	ft_atoi(char *str)
 			s *= -1;
 		i++;
 	}
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		ft_error();
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		a = a * 10 + str[i] - '0';
 		i++;
 	}
+	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
+		ft_error();
 	return (ft_max(a, s));
 }

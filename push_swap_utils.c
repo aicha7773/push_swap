@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:05:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/11 17:19:38 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/19 17:05:29 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,37 @@ t_pile	*ft_lstnew(int content)
 	return (l);
 }
 
-void	putstr(char *s, int j)
+void	putstr(char *s)
 {
 	int	i;
 
 	i = -1;
 	while (s[++i])
-		write(j, &s[i], 1);
+		write(1, &s[i], 1);
 }
 
-void	ft_error(char *s)
+void	ft_error(void)
 {
-	(void)s;
-	putstr("Error\n", 2);
+	int		i;
+	char	*s;
+
+	s = "Error\n";
+	i = -1;
+	while (s[++i])
+		write(1, &s[i], 1);
 	exit(1);
 }
 
-t_pile	*in_pile(char **v, int num)
+t_pile	*in_pile(char **v)
 {
-	t_pile	*l;
-	t_pile	*tmp;
 	int		i;
+	t_pile	*l;
 
-	(void)num;
+	l = NULL;
 	i = 1;
 	while (v[i])
 	{
-		tmp = ft_lstnew(ft_atoi(v[i]));
-		ft_lstadd_back(&l, tmp);
+		ft_lstadd_back(&l, ft_lstnew(ft_atoi(v[i])));
 		i++;
 	}
 	return (l);
@@ -78,7 +81,7 @@ void	affiche(t_pile *p)
 		return ;
 	if (!p->next)
 	{
-		printf("%d\n", p->data);
+		printf("%d  \n", p->data);
 		return ;
 	}
 	while (p)

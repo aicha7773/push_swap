@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:54:56 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/10 22:09:43 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/19 17:08:07 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	push(t_pile **aa, t_pile **bb)
 {
 	t_pile	*tmp;
 
+	(void)bb;
 	tmp = ft_lstnew((*aa)->data);
 	ft_lstadd_back(bb, tmp);
 	ft_lstdelfront(aa);

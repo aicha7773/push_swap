@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/13 14:47:38 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/19 17:34:23 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ typedef struct t_ppile
 {
 	int				data;
 	struct t_ppile	*next;
+	int				index;
 }					t_pile;
 
-void				putstr(char *s, int j);
-void				ft_error(char *s);
-int					check_input(char **f);
+void				putstr(char *s);
+void				ft_error(void);
+void				check_input(char **f);
 int					ft_atoi(char *str);
-t_pile				*in_pile(char **v, int num);
+t_pile				*in_pile(char **v);
 int					*in_pilee(char **v, int num);
 int					*treter(int *tab);
 void				affichetab(int *tab);
@@ -57,4 +58,9 @@ int					scan_buttom(t_pile *l, int j);
 void				ft_top(t_pile **l, t_pile **chank, int i);
 void				ft_buttom(t_pile **l, t_pile **chank, int i);
 void				main_function(t_pile **l);
+void				indicer(t_pile *l);
+void				trier_tab(int *tab);
+int					*struct_to_tab(t_pile *l);
+void				dix(t_pile **l);
+int					ft_min(t_pile *lst);
 #endif

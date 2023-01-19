@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   trier.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
+/*   Updated: 2023/01/18 18:30:29 by aatki            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	yes(t_pile *l)
@@ -35,20 +47,25 @@ int	*struct_to_tab(t_pile *l)
 	return (tab);
 }
 
-void	indices(int *tab, t_pile *l)
+void	indicer(t_pile *l)
 {
-	int	*tab2;
+	int	*tab;
 	int	i;
 
-	tab2 = malloc(sizeof(int) * sizeof(tab));
+	tab = struct_to_tab(l);
+	trier_tab(tab);
 	i = 0;
-	while (l->next)
+	while (l)
 	{
-		tab[i] = l->data;
-		i++;
+		while (tab[i])
+		{
+			if (l->data == tab[i])
+				l->index = i;
+			i++;
+		}
+		printf("test\n");
+		i = 0;
 		l = l->next;
-		if (l == NULL)
-			break ;
 	}
 }
 
@@ -58,14 +75,13 @@ void	trier_tab(int *tab)
 	int	swap;
 
 	i = 0;
-	while (tab[i])
+	while (i < 2)
 	{
 		if (tab[i] > tab[i + 1])
 		{
 			swap = tab[i];
 			tab[i] = tab[i + 1];
 			tab[i + 1] = swap;
-			i = 0;
 		}
 		i++;
 	}
