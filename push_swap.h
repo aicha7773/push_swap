@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/19 17:34:23 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/20 16:25:59 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ void				trier_tab(int *tab);
 int					*struct_to_tab(t_pile *l);
 void				dix(t_pile **l);
 int					ft_min(t_pile *lst);
+void				hundred(t_pile **l);
+int					yes(t_pile *l);
 #endif

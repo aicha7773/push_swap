@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/18 18:30:29 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/20 15:12:56 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,21 @@ int	*struct_to_tab(t_pile *l)
 {
 	int	*tab;
 	int	i;
+	int	s;
 
-	tab = malloc(sizeof(int) * ft_lstsize(l));
+	s = ft_lstsize(l);
+	tab = malloc(sizeof(int) * (s + 1));
 	if (!l)
 		return (NULL);
 	i = 0;
-	while (l->next)
+	tab[s] = '\0';
+	while (tab[i])
 	{
 		tab[i] = l->data;
 		i++;
 		l = l->next;
-		if (l == NULL)
-			break ;
 	}
+	//printf("%d\n", i);
 	return (tab);
 }
 
@@ -75,15 +77,17 @@ void	trier_tab(int *tab)
 	int	swap;
 
 	i = 0;
-	while (i < 2)
+	while (tab[i])
 	{
 		if (tab[i] > tab[i + 1])
 		{
 			swap = tab[i];
 			tab[i] = tab[i + 1];
 			tab[i + 1] = swap;
+			i = 0;
 		}
-		i++;
+		else
+			i++;
 	}
 }
 
