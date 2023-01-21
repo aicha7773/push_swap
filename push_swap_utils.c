@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:05:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/19 17:05:29 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 09:13:59 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ void	affiche(t_pile *p)
 		return ;
 	if (!p->next)
 	{
-		printf("%d  \n", p->data);
+		printf("%d  %d\n", p->data, p->index);
 		return ;
 	}
 	while (p)
 	{
-		printf("%d\n", p->data);
+		printf("%d  %d\n", p->data, p->index);
 		p = p->next;
 	}
 }

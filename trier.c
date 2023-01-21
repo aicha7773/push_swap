@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/20 15:12:56 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 22:18:27 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,34 @@ int	yes(t_pile *l)
 		l = l->next;
 		if (l == NULL)
 			break ;
+	}
+	return (1);
+}
+
+int	dupp(t_pile *l, int d)
+{
+	if (!l)
+		return (1);
+	while (l)
+	{
+		if (l->data == d)
+			return (0);
+		l = l->next;
+	}
+	return (1);
+}
+
+int	duplicated(t_pile *l)
+{
+	t_pile	*c;
+
+	c = NULL;
+	while (l)
+	{
+		if (!dupp(c, l->data))
+			return (0);
+		ft_lstadd_back(&c, ft_lstnew(l->data));
+		l = l->next;
 	}
 	return (1);
 }
@@ -45,28 +73,53 @@ int	*struct_to_tab(t_pile *l)
 		i++;
 		l = l->next;
 	}
-	//printf("%d\n", i);
 	return (tab);
+}
+
+void	delete_alike(int *tab)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (tab[i])
+	{
+		if (tab[i] == tab[i + 1])
+		{
+			tab[i + 1] = tab[i + 2 + j];
+			i = 0;
+			j++;
+		}
+		else
+			i++;
+	}
 }
 
 void	indicer(t_pile *l)
 {
 	int	*tab;
 	int	i;
+	int	j;
 
 	tab = struct_to_tab(l);
 	trier_tab(tab);
-	i = 0;
+	//delete_alike(tab);
+	i = 1;
+	j = 0;
 	while (l)
 	{
 		while (tab[i])
 		{
 			if (l->data == tab[i])
+			{
 				l->index = i;
+				i = 0;
+				break ;
+			}
 			i++;
 		}
-		printf("test\n");
-		i = 0;
+		i++;
 		l = l->next;
 	}
 }

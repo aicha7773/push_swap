@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/20 16:27:50 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 22:19:25 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	push_swap(int c, char **v)
 
 	check_input(v);
 	t = in_pile(v);
+	if (!duplicated(t))
+		return ;
 	if (yes(t))
 		return ;
 	if (c == 3 && t->data < t->next->data)
@@ -27,7 +29,8 @@ void	push_swap(int c, char **v)
 	else if (c > 4 && c <= 10)
 		dix(&t);
 	else if (c > 10)
-		hundred(&t);
+		ten_to_ten(&t);
+	//	hundred(&t);
 }
 
 int	main(int c, char **v)

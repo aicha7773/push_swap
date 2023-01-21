@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/19 17:54:39 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 12:11:53 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_input(char **f)
 	}
 }
 
-int	ft_max(unsigned long long a, int sign)
+int	ft_maxx(unsigned long long a, int sign)
 {
 	if (a >= 9223372036854775807 && sign == 1)
 		return (-1);
@@ -80,5 +80,5 @@ int	ft_atoi(char *str)
 	}
 	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		ft_error();
-	return (ft_max(a, s));
+	return (ft_maxx(a, s));
 }

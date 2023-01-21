@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/20 16:25:59 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 21:42:17 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void				indicer(t_pile *l);
 void				trier_tab(int *tab);
 int					*struct_to_tab(t_pile *l);
 void				dix(t_pile **l);
-int					ft_min(t_pile *lst);
+int					ft_max(t_pile *lst);
 void				hundred(t_pile **l);
 int					yes(t_pile *l);
+void				ten_to_ten(t_pile **l);
+int					duplicated(t_pile *l);
 #endif

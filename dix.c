@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:54 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/19 16:17:34 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/21 12:13:50 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,39 @@ void	dix(t_pile **l)
 	int		size;
 	t_pile	*b;
 	int		i;
-	int		min;
+	int		max;
 
 	b = NULL;
 	i = 0;
 	size = ft_lstsize(*l);
 	while (*l)
 	{
-		min = ft_min(*l);
-		if (min < (size - i) / 2)
-			ft_top(l, &b, min);
+		max = ft_max(*l);
+		if (max < (size - i) / 2)
+			ft_top(l, &b, max);
 		else
-			ft_buttom(l, &b, min);
+			ft_buttom(l, &b, max);
 		i++;
 	}
-	affiche(b);
 	while (b)
 		push(&b, l);
-	printf("apres\n");
-	affiche(*l);
+	//affiche(*l);
 }
 
-int	ft_min(t_pile *lst)
+int	ft_max(t_pile *lst)
 {
 	int	i;
 	int	indice;
-	int	min;
+	int	max;
 
+	indice = 0;
 	i = 0;
-	min = lst->data;
+	max = lst->data;
 	while (lst)
 	{
-		if (lst->data < min)
+		if (lst->data > max)
 		{
-			min = lst->data;
+			max = lst->data;
 			indice = i;
 		}
 		i++;
@@ -94,5 +93,5 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i)
 		j++;
 	}
 	push(l, chank);
-	putstr("pa");
+	putstr("pa\n");
 }
