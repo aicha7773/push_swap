@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:54:56 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/21 21:40:18 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/23 21:10:20 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	push(t_pile **aa, t_pile **bb)
 
 	(void)bb;
 	tmp = ft_lstnew((*aa)->data);
-	ft_lstadd_back(bb, tmp);
+	ft_lstadd_front(bb, tmp);
 	ft_lstdelfront(aa);
 }
 
@@ -46,12 +46,23 @@ void	push_a_b(t_pile **aa, t_pile **bb)
 	push(bb, aa);
 }
 
+void	imagination(t_pile **aa, t_pile **bb)
+{
+	t_pile	*tmp;
+
+	(void)bb;
+	tmp = ft_lstnew((*aa)->data);
+	ft_lstadd_back(bb, tmp);
+	ft_lstdelfront(aa);
+}
+
 void	rot(t_pile **a)
 {
 	t_pile	*tmp;
 
 	tmp = NULL;
-	push_a_b(a, &tmp);
+	imagination(a, &tmp);
+	imagination(&tmp, a);
 }
 
 void	rot_a_b(t_pile **a, t_pile **b)

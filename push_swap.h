@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/21 21:42:17 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/23 17:03:29 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					ft_atoi(char *str);
 t_pile				*in_pile(char **v);
 int					*in_pilee(char **v, int num);
 int					*treter(int *tab);
-void				affichetab(int *tab);
+void				affichetab(int *tab, int size);
 void				affiche(t_pile *p);
 t_pile				*ft_lstnew(int content);
 void				ft_lstadd_back(t_pile **lst, t_pile *new);
@@ -55,16 +55,20 @@ int					ft_lstsize(t_pile *lst);
 void				if_trois(t_pile *l);
 int					scan_top(t_pile *l, int j);
 int					scan_buttom(t_pile *l, int j);
-void				ft_top(t_pile **l, t_pile **chank, int i);
-void				ft_buttom(t_pile **l, t_pile **chank, int i);
+void				ft_top(t_pile **l, t_pile **chank, int i, char c);
+void				ft_buttom(t_pile **l, t_pile **chank, int i, char c);
 void				main_function(t_pile **l);
 void				indicer(t_pile *l);
 void				trier_tab(int *tab);
 int					*struct_to_tab(t_pile *l);
 void				dix(t_pile **l);
-int					ft_max(t_pile *lst);
+int					ft_pos(t_pile *lst, int val);
 void				hundred(t_pile **l);
 int					yes(t_pile *l);
 void				ten_to_ten(t_pile **l);
 int					duplicated(t_pile *l);
+void				which_way(t_pile **l, t_pile **b, int val, char c);
+void				autre(t_pile **l);
+void				trier2(int *T, int n);
+void				simple(t_pile **l);
 #endif

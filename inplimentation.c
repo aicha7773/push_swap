@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:29 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/18 18:29:43 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/23 17:02:15 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	just(t_pile **l, int j)
 	while (check(*l, j))
 	{
 		top = scan_top(*l, j);
-		ft_top(l, &b, top);
+		ft_top(l, &b, top, 'a');
 	}
 	affiche(b);
 	printf("after\n");

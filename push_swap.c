@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/21 22:19:25 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/23 20:35:57 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,17 @@ void	push_swap(int c, char **v)
 	if (c == 3 && t->data < t->next->data)
 		putstr("sa");
 	if (c == 4)
+	{
 		if_trois(t);
-	else if (c > 4 && c <= 10)
-		dix(&t);
-	else if (c > 10)
-		ten_to_ten(&t);
-	//	hundred(&t);
+		return ;
+	}
+	simple(&t);
+	//autre(&t);
+	// else if (c > 4 && c <= 10)
+	// 	dix(&t);
+	// else if (c > 10)
+	//ten_to_ten(&t);
+	//hundred(&t);
 }
 
 int	main(int c, char **v)

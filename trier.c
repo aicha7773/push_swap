@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/21 22:18:27 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/22 22:19:51 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,17 @@ void	indicer(t_pile *l)
 {
 	int	*tab;
 	int	i;
-	int	j;
+	int	size;
 
+	if (!l)
+		return ;
+	size = ft_lstsize(l);
 	tab = struct_to_tab(l);
 	trier_tab(tab);
-	//delete_alike(tab);
-	i = 1;
-	j = 0;
+	i = 0;
 	while (l)
 	{
-		while (tab[i])
+		while (i < size)
 		{
 			if (l->data == tab[i])
 			{
@@ -119,7 +120,6 @@ void	indicer(t_pile *l)
 			}
 			i++;
 		}
-		i++;
 		l = l->next;
 	}
 }

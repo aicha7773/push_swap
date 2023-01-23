@@ -6,7 +6,7 @@
 /*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 00:14:38 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/20 18:15:53 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/22 21:19:41 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	hundred(t_pile **l)
 	tmp = *l;
 	tab = struct_to_tab(*l);
 	trier_tab(tab);
-	affichetab(tab);
+	affichetab(tab, 8);
 	while (tmp)
 	{
 		d = tmp->data;
@@ -44,12 +44,12 @@ void	hundred(t_pile **l)
 	// affiche(tmp);
 }
 
-void	affichetab(int *tab)
+void	affichetab(int *tab, int size)
 {
 	int	i;
 
 	i = 0;
-	while (i < 13)
+	while (i < size)
 	{
 		printf("%d\n", tab[i]);
 		i++;
