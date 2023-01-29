@@ -12,62 +12,18 @@
 
 #include "push_swap.h"
 
-int	yes(t_pile *l)
-{
-	if (!l)
-		return (1);
-	while (l->next)
-	{
-		if (l->data > l->next->data)
-			return (0);
-		l = l->next;
-		if (l == NULL)
-			break ;
-	}
-	return (1);
-}
-
-int	dupp(t_pile *l, int d)
-{
-	if (!l)
-		return (1);
-	while (l)
-	{
-		if (l->data == d)
-			return (0);
-		l = l->next;
-	}
-	return (1);
-}
-
-int	duplicated(t_pile *l)
-{
-	t_pile	*c;
-
-	c = NULL;
-	while (l)
-	{
-		if (!dupp(c, l->data))
-			return (0);
-		ft_lstadd_back(&c, ft_lstnew(l->data));
-		l = l->next;
-	}
-	return (1);
-}
-
 int	*struct_to_tab(t_pile *l)
 {
 	int	*tab;
 	int	i;
 	int	s;
 
+	i=0;
 	s = ft_lstsize(l);
-	tab = malloc(sizeof(int) * (s + 1));
+	tab = malloc(sizeof(int) * (s));
 	if (!l)
 		return (NULL);
-	i = 0;
-	tab[s] = '\0';
-	while (tab[i])
+	while (i < s)
 	{
 		tab[i] = l->data;
 		i++;
@@ -76,23 +32,15 @@ int	*struct_to_tab(t_pile *l)
 	return (tab);
 }
 
-void	delete_alike(int *tab)
+void	affichetab(int *tab, int size)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	j = 0;
-	while (tab[i])
+	i = 0;
+	while (i < size)
 	{
-		if (tab[i] == tab[i + 1])
-		{
-			tab[i + 1] = tab[i + 2 + j];
-			i = 0;
-			j++;
-		}
-		else
-			i++;
+		printf("%d\n", tab[i]);
+		i++;
 	}
 }
 
@@ -106,7 +54,8 @@ void	indicer(t_pile *l)
 		return ;
 	size = ft_lstsize(l);
 	tab = struct_to_tab(l);
-	trier_tab(tab);
+	
+	trier_tab(tab,size);
 	i = 0;
 	while (l)
 	{
@@ -115,7 +64,7 @@ void	indicer(t_pile *l)
 			if (l->data == tab[i])
 			{
 				l->index = i;
-				i = 0;
+				i=0;
 				break ;
 			}
 			i++;
@@ -124,13 +73,38 @@ void	indicer(t_pile *l)
 	}
 }
 
-void	trier_tab(int *tab)
+
+void	trier_tab(int *T, int size)
+{
+	int i, j, k, c;
+	i = 1; 
+	while (i < size)
+	{
+		if (T[i] < T[i - 1])
+		{
+			j = 0;
+			while (T[j] < T[i])
+				j++;
+			c = T[i];
+			k = i - 1;
+			while (k >= j)
+			{
+				T[k + 1] = T[k];
+				k--;
+			}
+			T[j] = c;
+		}
+		i++;
+	}
+}
+
+void	trier_tabbb(int *tab, int	size)
 {
 	int	i;
 	int	swap;
 
 	i = 0;
-	while (tab[i])
+	while (i<size)
 	{
 		if (tab[i] > tab[i + 1])
 		{
@@ -141,26 +115,5 @@ void	trier_tab(int *tab)
 		}
 		else
 			i++;
-	}
-}
-
-void	trier(t_pile *l)
-{
-	t_pile	*save;
-
-	save = l;
-	while (l)
-	{
-		if (!l->next)
-			l = save;
-		if (yes(save))
-			break ;
-		if (l->data > l->next->data)
-		{
-			swap(l);
-			write(1, "swap a\n", 7);
-			l = save;
-		}
-		l = l->next;
 	}
 }

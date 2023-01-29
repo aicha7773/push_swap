@@ -3,21 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aatki <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: aatki <aatki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 17:33:49 by aatki             #+#    #+#              #
-#    Updated: 2023/01/23 16:56:19 by aatki            ###   ########.fr        #
+#    Updated: 2023/01/29 04:15:49 by aatki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
 CC = cc
 
-SRC = check_input.c push_swap.c push_swap_utils.c swap_functions.c libft.c trier.c swap3.c inplimentation.c which_way.c hundred.c\
-		more_tries.c an_other_other_try.c the_last.c
+SRC = check_input.c\
+	push_swap.c\
+	push_swap_utils.c\
+	swap_functions.c\
+	libft.c\
+	tools.c\
+	swap3.c\
+	if_five.c\
+	which_way.c\
+	the_last.c\
+	not_the_last.c\
 	
 
 all : $(NAME)

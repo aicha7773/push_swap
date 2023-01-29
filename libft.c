@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:58 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/19 16:48:40 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/27 21:54:37 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_lstadd_back(t_pile **lst, t_pile *new)
+{
+	t_pile	*temp;
+
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		temp = (*lst);
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
+}
+
+t_pile	*ft_lstnew(int content)
+{
+	t_pile	*l;
+
+	l = malloc(sizeof(t_pile));
+	if (!l)
+		return (NULL);
+	l->data = content;
+	l->next = NULL;
+	return (l);
+}
 
 void	ft_lstadd_front(t_pile **lst, t_pile *new)
 {
@@ -32,14 +59,9 @@ void	ft_lstdelfront(t_pile **lst)
 
 	if (!*lst)
 		return ;
-	// if (!(*lst)->next)
-	// {
-	// 	printf("heeeere");
-	// 	free(*lst);
-	// 	return ;
-	// }
 	tmp = *lst;
 	tmp = tmp->next;
+	*lst=NULL;
 	free(*lst);
 	*lst = tmp;
 }

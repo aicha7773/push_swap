@@ -12,33 +12,6 @@
 
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_pile **lst, t_pile *new)
-{
-	t_pile	*temp;
-
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		temp = (*lst);
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new;
-	}
-}
-
-t_pile	*ft_lstnew(int content)
-{
-	t_pile	*l;
-
-	l = malloc(sizeof(t_pile));
-	if (!l)
-		return (NULL);
-	l->data = content;
-	l->next = NULL;
-	return (l);
-}
-
 void	putstr(char *s)
 {
 	int	i;
@@ -50,13 +23,7 @@ void	putstr(char *s)
 
 void	ft_error(void)
 {
-	int		i;
-	char	*s;
-
-	s = "Error\n";
-	i = -1;
-	while (s[++i])
-		write(1, &s[i], 1);
+	write(1,"Error\n", 6);
 	exit(1);
 }
 

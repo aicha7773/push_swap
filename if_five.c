@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   if_five.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/29 02:54:38 by aatki            ###   ########.fr       */
+/*   Created: 2023/01/27 12:40:26 by aatki             #+#    #+#             */
+/*   Updated: 2023/01/27 12:55:48 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(int c, char **v)
+int	min_list(t_pile *l)
 {
-	t_pile	*t;
+	int	i;
+	int	ret;
+	int	min;
 
-	check_input(v);
-	t = in_pile(v);
-	duplicated(t);
-	// t_pile *b;
-
-	// push(&t,&b);
-	// affiche(b);
-	// printf("heeeeere\n");
-	// affiche(t);
-	if (no_need(t))
-		return ;
-	if (c == 3 && t->data < t->next->data)
-		putstr("sa");
-	if (c == 4)
-		if_three(t);
-	if(c == 6)
-		if_five(t);
-	if (c > 6)
-		the_one(&t);
-
+	i = 0;
+	min = l->data;
+	ret = 0;
+	while (l)
+	{
+		if (l->data > min)
+		{
+			min = l->data;
+			ret = i;
+		}
+		i++;
+		l = l->next;
+	}
+	return (ret);
 }
 
-int	main(int c, char **v)
+void  if_five(t_pile *l)
 {
-	if (c > 1)
-		push_swap(c, v);
+	t_pile *b;
+
+	b=NULL;
+	which_way(&l,&b,min_list(l),'a');
+	which_way(&l,&b,min_list(l),'a');
+	if_three(l);
+	push(&b,&l);
+	push(&b,&l);
+	putstr("pa\npa\n");
 }

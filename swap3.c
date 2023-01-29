@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	if_trois(t_pile *l)
+void	if_three(t_pile *l)
 {
 	int	a;
 	int	b;
@@ -26,21 +26,15 @@ void	if_trois(t_pile *l)
 		putstr("sa\n");
 		putstr("ra\n");
 	}
-	else if (b < c && c < a)
-	{
-		putstr("ra\n");
-	}
-	else if (b < a && a < c)
-	{
-		putstr("sa\n");
-	}
 	else if (c < b && b < a)
 	{
 		putstr("sa\n");
 		putstr("rra\n");
 	}
+	else if (b < c && c < a)
+		putstr("ra\n");
+	else if (b < a && a < c)
+		putstr("sa\n");
 	else if (c < a && a < b)
-	{
 		putstr("rra\n");
-	}
 }

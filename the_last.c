@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	maxx(t_pile *l)
+int	max_list(t_pile *l)
 {
 	int	i;
 	int	ret;
@@ -53,45 +53,58 @@ int	ft_pos(t_pile *lst, int val)
 	return (indice);
 }
 
-void	simple(t_pile **l)
+void	main_function(t_pile **l)
 {
 	int		i;
 	t_pile	*b;
-	int		R;
+	int		r;
 	int		size;
+	int		count;
 
 	i = 0;
-	b = NULL;
-	R = 15;
-	indicer(*l);
-	// while (i < R && *l)
-	// {
-	// 	if ((*l)->index < R)
-	// 	{
-	// 		push(l, &b);
-	// 		putstr("pb\n");
-	// 		i++;
-	// 	}
-	// 	else
-	// 	{
-	// 		rot(l);
-	// 		putstr("ra\n");
-	// 	}
-	// 	if (i == R)
-	// 		R += 15;
-	// }
+	count = 0;                                                                                                                          
 	size = ft_lstsize(*l);
-	while (i < size)
-	{
-		which_way(l, &b, ft_pos(*l, i), 'a');
-		// if (i == R)
-		// 	R += 15;
-		i++;
-	}
+	b = NULL;
+	r = 20;
 	indicer(*l);
-	// affiche(*l);
+	//affiche(*l);
+	while (*l )
+	{
+		if ((*l)->index > count + 20)
+		{
+			push(l, &b);
+			putstr("pb\n");
+			count ++;
+		}
+		else if ((*l)->index < count)
+		{
+			push(l, &b);
+			putstr("pb\n");
+			rot(&b);
+			putstr("rb\n");
+			count++;
+		}
+		else
+		{
+			rot(l);
+			putstr("ra\n");
+			count++;
+		}
+		// if(no_need(*l))
+		// 	   break;
+	}
+	
+	// while (i < size)
+	// {
+	// 	which_way(l, &b, ft_pos(*l, i), 'a');
+	// 	// if (i == r)
+	// 	// 	r += 15;
+	// 	i++;
+	// }
+	//indicer(*l);
+	//affiche(*l);
 	while (b)
-		which_way(&b, l, maxx(b), 'b');
+		which_way(&b, l, max_list(b), 'b');
 	// if (yes(*l))
 	// 	printf("\n\nfkvbkggtgbhrtbk\n\n");
 }

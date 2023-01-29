@@ -12,6 +12,48 @@
 
 #include "push_swap.h"
 
+int	dupp(t_pile *l, int d)
+{
+	if (!l)
+		return (1);
+	while (l)
+	{
+		if (l->data == d)
+			return (0);
+		l = l->next;
+	}
+	return (1);
+}
+
+void	duplicated(t_pile *l)
+{
+	t_pile	*c;
+
+	c = NULL;
+	while (l)
+	{
+		if (!dupp(c, l->data))
+			ft_error();
+		ft_lstadd_back(&c, ft_lstnew(l->data));
+		l = l->next;
+	}
+}
+
+int	no_need(t_pile *l)
+{
+	if (!l)
+		return (1);
+	while (l->next)
+	{
+		if (l->data > l->next->data)
+			return (0);
+		l = l->next;
+		if (l == NULL)
+			break ;
+	}
+	return (1);
+}
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -38,19 +80,10 @@ void	check_input(char **f)
 	{
 		if (!ft_strncmp(f[i], "2147483647", 10) || !ft_strncmp(f[i],
 				"-2147483648", 11))
-			exit(0);
+			ft_error();
 		ft_atoi(f[i]);
 		i++;
 	}
-}
-
-int	ft_maxx(unsigned long long a, int sign)
-{
-	if (a >= 9223372036854775807 && sign == 1)
-		return (-1);
-	else if (a > 9223372036854775807 && sign == -1)
-		return (1);
-	return ((int)a * sign);
 }
 
 int	ft_atoi(char *str)
@@ -80,5 +113,5 @@ int	ft_atoi(char *str)
 	}
 	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
 		ft_error();
-	return (ft_maxx(a, s));
+	return (a * s);
 }
