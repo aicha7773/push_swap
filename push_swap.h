@@ -24,6 +24,7 @@ typedef struct t_ppile
 	int				index;
 }					t_pile;
 
+t_pile			    *ft_pop(t_pile **stack);
 void				putstr(char *s);
 void				ft_error(void);
 void				check_input(char **f);

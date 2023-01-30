@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/29 02:54:38 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/29 20:34:07 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ void	push_swap(int c, char **v)
 	check_input(v);
 	t = in_pile(v);
 	duplicated(t);
-	// t_pile *b;
-
-	// push(&t,&b);
-	// affiche(b);
+	// t_pile *b=NULL;
+	// b=NULL;
+	// rot(&t);
+	// //affiche(b);
 	// printf("heeeeere\n");
 	// affiche(t);
+
+
 	if (no_need(t))
 		return ;
 	if (c == 3 && t->data < t->next->data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   which_way.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:54 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/23 23:22:53 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/30 19:26:43 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,14 @@
 void	which_way(t_pile **l, t_pile **b, int pos, char c)
 {
 	int	size;
-	int	i;
 
 	if (!*l)
 		return ;
-	i = 0;
 	size = ft_lstsize(*l);
+	if (pos >= size / 2)	
+		ft_buttom(l, b, pos, c);
 	if (pos < size / 2)
 		ft_top(l, b, pos, c);
-	else
-		ft_buttom(l, b, pos, c);
-	i++;
 }
 
 void	ft_top(t_pile **l, t_pile **chank, int i, char c)
@@ -56,6 +53,7 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 		return ;
 	if (!chank)
 		return ;
+	
 	i = ft_lstsize(*l) - i;
 	while (i)
 	{
@@ -71,4 +69,4 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 		write(1, "a\n", 2);
 	else if (c == 'a')
 		write(1, "b\n", 2);
-}
+ }
