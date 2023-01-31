@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:54:56 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/30 19:45:44 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/31 17:40:10 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ int    push_test(t_pile **stack, int elem)
 
 void	push(t_pile **a, t_pile **b)
 {
-	// t_pile	*tmp;
-	// (void)bb;
-	// tmp = ft_lstnew((*aa)->data);
-	// ft_lstadd_front(bb, tmp);
-	// ft_lstdelfront(aa);
+	t_pile	*tmp;
+	(void)b;
+	tmp = ft_lstnew((*a)->data);
+	ft_lstadd_front(b, tmp);
+	ft_lstdelfront(a);
 	
 	// t_pile *tmp;
 	// tmp =(*aa)->next;
@@ -73,21 +73,21 @@ void	push(t_pile **a, t_pile **b)
 	// push_test(b, (*a)->data);
 	// ft_pop(a);
 
-	if(!*a)
-		return;
-	t_pile	*tmp;
-	if(!*b)
-	{
-		 tmp = (*a)->next;
-		(*a)->next = NULL;
-		*b =*a;
-		*a = tmp;
-		return ;
-	}
-    tmp = (*a)->next;
-    (*a)->next = *b;
-    *b =*a;
-    *a = tmp;
+	// if(!*a)
+	// 	return;
+	// t_pile	*tmp;
+	// if(!*b)
+	// {
+	// 	 tmp = (*a)->next;
+	// 	(*a)->next = NULL;
+	// 	*b =*a;
+	// 	*a = tmp;
+	// 	return ;
+	// }
+    // tmp = (*a)->next;
+    // (*a)->next = *b;
+    // *b =*a;
+    // *a = tmp;
 
 
 	// t_pile *b_head = *b;
@@ -115,19 +115,19 @@ void	imagination(t_pile **aa, t_pile **bb)
 
 void	rot(t_pile **a)
 {
-	// t_pile	*tmp ;
-	// tmp = NULL;
-	// imagination(a, &tmp);
-	// imagination(&tmp, a);
+	t_pile	*tmp ;
+	tmp = NULL;
+	imagination(a, &tmp);
+	imagination(&tmp, a);
 
-	t_pile	*tmp = *a;
-	t_pile	*tmp2 = *a;
-	*a = (*a)->next;
+	// t_pile	*tmp = *a;
+	// t_pile	*tmp2 = *a;
+	// *a = (*a)->next;
 	
-	while(tmp2->next)
-		tmp2=tmp2->next;
-	tmp2->next=tmp;
-	tmp->next = NULL;
+	// while(tmp2->next)
+	// 	tmp2=tmp2->next;
+	// tmp2->next=tmp;
+	// tmp->next = NULL;
 }
 
 void	rot_a_b(t_pile **a, t_pile **b)

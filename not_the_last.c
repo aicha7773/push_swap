@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:06:46 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/30 19:58:25 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/31 14:38:53 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ int pos(t_pile *l,int d)
     return i;
 }
 
-int in_zone(t_pile *l,int data,int min,int max)
-{
-
-    while(l)
-    {
-        if(l->data == data && l->index >=min && l->index <=max)
-            return 1;
-        l=l->next;
-    }
-    return 0;
-}
 
 void	the_one(t_pile **l)
 {
@@ -77,6 +66,7 @@ void	the_one(t_pile **l)
         i += 14;
         if (i > size)
             i = size;
+        if(ft_lstsize(*l))
         if(no_need(*l))
             break; 
 	}

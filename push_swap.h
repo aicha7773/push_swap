@@ -51,7 +51,6 @@ int					ft_lstsize(t_pile *lst);
 void				if_three(t_pile *l);
 void				ft_top(t_pile **l, t_pile **chank, int i, char c);
 void				ft_buttom(t_pile **l, t_pile **chank, int i, char c);
-void				main_function(t_pile **l);
 void				indicer(t_pile *l);
 void				trier_tab(int *tab,int size);
 int					*struct_to_tab(t_pile *l);
@@ -63,5 +62,6 @@ int					min_list(t_pile *l);
 void				the_one(t_pile **l);
 int					max_list(t_pile *l);
 void				if_five(t_pile *l);
+int					ft_strcmp(const char *s1, const char *s2);
 
 #endif

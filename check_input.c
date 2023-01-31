@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/21 12:11:53 by aatki            ###   ########.fr       */
+/*   Updated: 2023/01/31 16:05:34 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,12 @@ int	no_need(t_pile *l)
 	return (1);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && i < n - 1 && s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	if ((unsigned char)s1[i] < (unsigned char)s2[i])
 		return (-1);
@@ -78,8 +76,8 @@ void	check_input(char **f)
 	i = 1;
 	while (f[i])
 	{
-		if (!ft_strncmp(f[i], "2147483647", 10) || !ft_strncmp(f[i],
-				"-2147483648", 11))
+		if (!ft_strcmp(f[i], "2147483647") || !ft_strcmp(f[i],
+				"-2147483648"))
 			ft_error();
 		ft_atoi(f[i]);
 		i++;
