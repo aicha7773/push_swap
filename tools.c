@@ -6,18 +6,19 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/30 11:49:05 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/05 18:43:35 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*struct_to_tab(t_pile *l)
+int	*struct_to_tab(t_pile *p)
 {
 	int	*tab;
 	int	i;
 	int	s;
-
+	t_pile *l;
+	l = p;
 	i=0;
 	s = ft_lstsize(l);
 	tab = malloc(sizeof(int) * (s));
@@ -112,7 +113,6 @@ void	trier_tabbb(int *tab, int	size)
 			tab[i + 1] = swap;
 			i = 0;
 		}
-		else
 			i++;
 	}
 }

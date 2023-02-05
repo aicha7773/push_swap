@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:58 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/27 21:54:37 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/05 21:48:43 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_lstadd_back(t_pile **lst, t_pile *new)
 		while (temp->next)
 			temp = temp->next;
 		temp->next = new;
+		//new->next=NULL;
 	}
 }
 
@@ -43,7 +44,7 @@ void	ft_lstadd_front(t_pile **lst, t_pile *new)
 {
 	if (new)
 	{
-		if (!lst)
+		if (!*lst)
 		{
 			*lst = new;
 			return ;
@@ -105,8 +106,10 @@ t_pile	*ft_lstlast(t_pile *lst)
 	return (lst);
 }
 
-int	ft_lstsize(t_pile *lst)
+int	ft_lstsize(t_pile *p)
 {
+	t_pile *lst;
+	lst = p;
 	int	i;
 
 	i = 0;
@@ -116,4 +119,15 @@ int	ft_lstsize(t_pile *lst)
 		i++;
 	}
 	return (i);
+}
+
+int ft_lstlastint(t_pile *lst)
+{
+	if (!lst)
+		return (0);
+
+	while (lst->next)
+		lst = lst->next;
+
+	return (lst->data);
 }

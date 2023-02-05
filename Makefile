@@ -6,7 +6,7 @@
 #    By: aatki <aatki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 17:33:49 by aatki             #+#    #+#              #
-#    Updated: 2023/01/31 17:53:29 by aatki            ###   ########.fr        #
+#    Updated: 2023/02/05 21:48:20 by aatki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS =  -fsanitize=address -g -g3 #-Wall -Wextra -Werror
 
 CC = cc
 
@@ -28,6 +28,8 @@ SRC = check_input.c\
 	which_way.c\
 	the_last.c\
 	not_the_last.c\
+	an_other_other_try.c\
+	which_way2.c
 
 SRCB= ./bonus/main.c\
 		./bonus/checker_bonus.c\
@@ -45,7 +47,7 @@ $(NAME) : $(SRC)
 
 bonus : $(NAME_BONUS)
 
-$(NAME_BONUS) :
+$(NAME_BONUS) : $(SRCB)
 	$(CC) $(CFLAGS) $(SRCB) $(SRC) -o $(NAME_BONUS)
 
 clean:
@@ -54,4 +56,4 @@ clean:
 fclean: clean
 	rm -rf $(NAME) $(NAME_BONUS)
 
-re : fclean all bonus
+re: fclean all

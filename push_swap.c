@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/31 18:02:13 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/05 21:41:20 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@ void	push_swap(int c, char **v)
 	check_input(v);
 	t = in_pile(v);
 	duplicated(t);
-	// t_pile *b=NULL;
-	// b=NULL;
-	// rot(&t);
-	// //affiche(b);
-	// printf("heeeeere\n");
-	// affiche(t);
-
-
 	if (no_need(t))
 		return ;
 	if (c == 3 && t->data < t->next->data)
@@ -37,11 +29,12 @@ void	push_swap(int c, char **v)
 		if_five(t);
 	if (c > 6)
 		the_one(&t);
-
+	ft_free(t);
 }
 
 int	main(int c, char **v)
 {
 	if (c > 1)
 		push_swap(c, v);
+	//system("leaks push_swap");
 }

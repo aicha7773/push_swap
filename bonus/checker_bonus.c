@@ -6,13 +6,13 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:25:59 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/31 18:41:10 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/03 15:45:54 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-char    *checker(t_pile *a)
+void  checker(t_pile *a)
 {
     t_pile *b;
 
@@ -50,7 +50,7 @@ char    *checker(t_pile *a)
         free (v);
     }
     if(no_need(a))
-        return("OK\n");
+        putstr("OK\n");
     else
-        return ("KO\n");
+        putstr("KO\n");
 }

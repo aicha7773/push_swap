@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/31 16:05:34 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/04 21:57:14 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,15 @@ void	duplicated(t_pile *l)
 	t_pile	*c;
 
 	c = NULL;
+	t_pile *tmp;
 	while (l)
 	{
 		if (!dupp(c, l->data))
 			ft_error();
-		ft_lstadd_back(&c, ft_lstnew(l->data));
+		tmp=ft_lstnew(l->data);
+		ft_lstadd_back(&c,tmp);
 		l = l->next;
+		// free(tmp);
 	}
 }
 

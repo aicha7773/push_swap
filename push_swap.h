@@ -63,5 +63,13 @@ void				the_one(t_pile **l);
 int					max_list(t_pile *l);
 void				if_five(t_pile *l);
 int					ft_strcmp(const char *s1, const char *s2);
+void				ft_free(t_pile *t);
+int					pos(t_pile *l,int d);
+void				affichetab(int *tab, int size);
+int					ft_lstlastint(t_pile *lst);
+void				which_way2(t_pile **l, int pos);
+void				ft_top2(t_pile **l, t_pile **chank, int i, char c,int *count);
+void				ft_buttom2(t_pile **l, t_pile **chank, int i, char c,int *count);
+void				please(t_pile **a,t_pile **b);
 
 #endif

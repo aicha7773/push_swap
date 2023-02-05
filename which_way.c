@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:54 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/30 19:26:43 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/04 21:22:07 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 		return ;
 	if (!chank)
 		return ;
-	
+
 	i = ft_lstsize(*l) - i;
 	while (i)
 	{
@@ -70,3 +70,4 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 	else if (c == 'a')
 		write(1, "b\n", 2);
  }
+ 

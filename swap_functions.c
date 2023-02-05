@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:54:56 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/31 17:40:10 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/05 21:34:39 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,51 +30,16 @@ void	swap_a_b(t_pile *a, t_pile *b)
 	swap(b);
 }
 
-t_pile    *ft_pop(t_pile **stack)
-{
-    t_pile    *node;
-
-    node= NULL;
-    if (!stack || !*stack)
-        return (0);
-    node = *stack;
-    *stack = (*stack)->next;
-    node->next = NULL;
-    free(node);
-    return (*stack);
-}
-
-int    push_test(t_pile **stack, int elem)
-{
-    t_pile    *new;
-
-    if (!stack)
-        return (0);
-    new = ft_lstnew(elem);
-    if (!new)
-        return (0);
-    new->next = *stack;
-    *stack = new;
-    return (1);
-}
-
 void	push(t_pile **a, t_pile **b)
 {
-	t_pile	*tmp;
-	(void)b;
+	if(!*a)
+		return;
+		t_pile	*tmp;
+	// (void)b;
 	tmp = ft_lstnew((*a)->data);
 	ft_lstadd_front(b, tmp);
-	ft_lstdelfront(a);
-	
-	// t_pile *tmp;
-	// tmp =(*aa)->next;
-	// //(tmp)->next=*bb;
-
-	// push_test(b, (*a)->data);
-	// ft_pop(a);
-
-	// if(!*a)
-	// 	return;
+	*a=(*a)->next;
+	//ft_lstdelfront(a);
 	// t_pile	*tmp;
 	// if(!*b)
 	// {
@@ -88,13 +53,6 @@ void	push(t_pile **a, t_pile **b)
     // (*a)->next = *b;
     // *b =*a;
     // *a = tmp;
-
-
-	// t_pile *b_head = *b;
-	// t_pile *tmp = (*b)->next;
-	// (*b)->next = *a;
-	// *b = tmp;
-	// *a = b_head;
 }
 
 void	push_a_b(t_pile **aa, t_pile **bb)
@@ -112,6 +70,18 @@ void	imagination(t_pile **aa, t_pile **bb)
 	ft_lstadd_back(bb, tmp);
 	ft_lstdelfront(aa);
 }
+
+// void	rot(t_pile **a)
+// {
+// 	t_pile	*tmp = *a;
+// 	t_pile	*tmp2 = *a;
+// 	*a = (*a)->next;
+	
+// 	while(tmp2->next)
+// 		tmp2=tmp2->next;
+// 	tmp2->next=tmp;
+// 	tmp->next = NULL;
+// }
 
 void	rot(t_pile **a)
 {
