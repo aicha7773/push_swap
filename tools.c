@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/05 18:43:35 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 23:07:51 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	*struct_to_tab(t_pile *p)
 {
-	int	*tab;
-	int	i;
-	int	s;
-	t_pile *l;
+	int		*tab;
+	int		i;
+	int		s;
+	t_pile	*l;
+
 	l = p;
-	i=0;
+	i = 0;
 	s = ft_lstsize(l);
 	tab = malloc(sizeof(int) * (s));
 	if (!l)
@@ -55,8 +56,7 @@ void	indicer(t_pile *l)
 		return ;
 	size = ft_lstsize(l);
 	tab = struct_to_tab(l);
-	
-	trier_tab(tab,size);
+	trier_tab(tab, size);
 	i = 0;
 	while (l)
 	{
@@ -65,19 +65,24 @@ void	indicer(t_pile *l)
 			if (l->data == tab[i])
 			{
 				l->index = i;
-				i=0;
+				i = 0;
 				break ;
 			}
 			i++;
 		}
 		l = l->next;
 	}
+	free(tab);
 }
 
 void	trier_tab(int *T, int size)
 {
-	int i, j, k, c;
-	i = 1; 
+	int	i;
+	int	j;
+	int	k;
+	int	c;
+
+	i = 1;
 	while (i < size)
 	{
 		if (T[i] < T[i - 1])
@@ -98,13 +103,13 @@ void	trier_tab(int *T, int size)
 	}
 }
 
-void	trier_tabbb(int *tab, int	size)
+void	trier_tabbb(int *tab, int size)
 {
 	int	i;
 	int	swap;
 
 	i = 0;
-	while (i<size)
+	while (i < size)
 	{
 		if (tab[i] > tab[i + 1])
 		{
@@ -113,6 +118,6 @@ void	trier_tabbb(int *tab, int	size)
 			tab[i + 1] = swap;
 			i = 0;
 		}
-			i++;
+		i++;
 	}
 }

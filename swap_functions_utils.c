@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   if_five.c                                          :+:      :+:    :+:   */
+/*   swap_functions_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 12:40:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 00:58:55 by aatki            ###   ########.fr       */
+/*   Created: 2023/02/06 23:12:00 by aatki             #+#    #+#             */
+/*   Updated: 2023/02/06 23:17:04 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	min_list(t_pile *l)
+int	max_list(t_pile *l)
 {
 	int	i;
 	int	ret;
-	int	min;
+	int	max;
 
 	i = 0;
-	min = l->data;
+	max = l->data;
 	ret = 0;
 	while (l)
 	{
-		if (l->data < min)
+		if (l->data > max)
 		{
-			min = l->data;
+			max = l->data;
 			ret = i;
 		}
 		i++;
@@ -34,23 +34,38 @@ int	min_list(t_pile *l)
 	return (ret);
 }
 
-void	if_five(t_pile **l)
+void	rot(t_pile **a)
 {
-	t_pile	*b;
+	t_pile	*tmp;
 
-	b = NULL;
-	if (ft_lstsize(*l) == 5)
-	{
-		which_way(l, &b, min_list(*l), 'a');
-		which_way(l, &b, min_list(*l), 'a');
-		if_three(*l);
-		putstr("pa\npa\n");
-	}
-	else if (ft_lstsize(*l) == 4)
-	{
-		which_way(l, &b, min_list(*l), 'a');
-		if_three(*l);
-		putstr("pa\n");
-	}
-	ft_free(b);
+	if (!*a || !a)
+		return ;
+	tmp = ft_lstnew((*a)->data);
+	ft_lstadd_back(a, tmp);
+	ft_lstdelfront(a);
+}
+
+void	rot_a_b(t_pile **a, t_pile **b)
+{
+	rot(a);
+	rot(b);
+}
+
+void	rev_rot(t_pile **a)
+{
+	t_pile	*tmp;
+
+	if (!*a || !a)
+		return ;
+	tmp = ft_lstnew(ft_lstlastint(*a));
+	if (!tmp)
+		return ;
+	ft_lstadd_front(a, tmp);
+	ft_lstdelback(a);
+}
+
+void	rrev_rot(t_pile **a, t_pile **b)
+{
+	rev_rot(a);
+	rev_rot(b);
 }

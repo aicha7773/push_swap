@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 02:56:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/01 13:17:34 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 22:57:33 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char *c);

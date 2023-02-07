@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:29:54 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/04 21:22:07 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 23:03:38 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	which_way(t_pile **l, t_pile **b, int pos, char c)
 	if (!*l)
 		return ;
 	size = ft_lstsize(*l);
-	if (pos >= size / 2)	
+	if (pos >= size / 2)
 		ft_buttom(l, b, pos, c);
 	if (pos < size / 2)
 		ft_top(l, b, pos, c);
@@ -53,7 +53,6 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 		return ;
 	if (!chank)
 		return ;
-
 	i = ft_lstsize(*l) - i;
 	while (i)
 	{
@@ -69,5 +68,4 @@ void	ft_buttom(t_pile **l, t_pile **chank, int i, char c)
 		write(1, "a\n", 2);
 	else if (c == 'a')
 		write(1, "b\n", 2);
- }
- 
+}

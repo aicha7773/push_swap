@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                      :::      ::::::::   */
+/*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aatki <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/ 03 17:03:05 by aatki             #+#    #+#             */
-/*   Updated: 2023/01/23 17:03:29 by aatki            ###   ########.fr       */
+/*   Created: 2023/02/06 23:26:08 by aatki             #+#    #+#             */
+/*   Updated: 2023/02/07 00:51:42 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct t_ppile
 	int				index;
 }					t_pile;
 
-t_pile			    *ft_pop(t_pile **stack);
+t_pile				*ft_pop(t_pile **stack);
 void				putstr(char *s);
 void				ft_error(void);
 void				check_input(char **f);
@@ -52,24 +52,22 @@ void				if_three(t_pile *l);
 void				ft_top(t_pile **l, t_pile **chank, int i, char c);
 void				ft_buttom(t_pile **l, t_pile **chank, int i, char c);
 void				indicer(t_pile *l);
-void				trier_tab(int *tab,int size);
+void				trier_tab(int *tab, int size);
 int					*struct_to_tab(t_pile *l);
 int					ft_pos(t_pile *lst, int val);
 int					no_need(t_pile *l);
 void				duplicated(t_pile *l);
 void				which_way(t_pile **l, t_pile **b, int val, char c);
 int					min_list(t_pile *l);
-void				the_one(t_pile **l);
+void				main_function(t_pile **l);
 int					max_list(t_pile *l);
-void				if_five(t_pile *l);
+void				if_five(t_pile **l);
 int					ft_strcmp(const char *s1, const char *s2);
 void				ft_free(t_pile *t);
-int					pos(t_pile *l,int d);
+int					pos(t_pile *l, int d);
 void				affichetab(int *tab, int size);
 int					ft_lstlastint(t_pile *lst);
 void				which_way2(t_pile **l, int pos);
-void				ft_top2(t_pile **l, t_pile **chank, int i, char c,int *count);
-void				ft_buttom2(t_pile **l, t_pile **chank, int i, char c,int *count);
-void				please(t_pile **a,t_pile **b);
+void				please(t_pile **a, t_pile **b);
 
 #endif

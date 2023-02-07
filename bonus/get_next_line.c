@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 02:01:17 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/01 16:04:57 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 23:05:52 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	new_line(char *s)
 	return (1);
 }
 
-int	init_get_next_line(char **string, char \
-		**tmp_string, char **tmp, char **s)
+int	init_get_next_line(char **string, char **tmp_string, char **tmp, char **s)
 {
 	*string = NULL;
 	*tmp_string = NULL;
@@ -43,7 +42,7 @@ int	init_get_next_line(char **string, char \
 	*tmp = malloc(BUFFER_SIZE + 1);
 	if (!*tmp)
 	{
-		free (*string);
+		free(*string);
 		return (0);
 	}
 	return (1);
@@ -55,9 +54,9 @@ char	*end_get_next_line(char **tmp, char **s, char **string)
 	*s = check(string);
 	if (*string[0] == '\0')
 	{
-		free (*string);
+		free(*string);
 		*string = NULL;
-		free (*s);
+		free(*s);
 		*s = NULL;
 	}
 	return (*string);
@@ -71,8 +70,8 @@ char	*get_next_line(int fd)
 	int			readed;
 	char		*tmp_string;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || \
-			!init_get_next_line(&string, &tmp_string, &tmp, &s))
+	if (fd < 0 || BUFFER_SIZE <= 0 || !init_get_next_line(&string, &tmp_string,
+			&tmp, &s))
 		return (NULL);
 	readed = 1;
 	while (new_line(string) && readed)
@@ -80,8 +79,8 @@ char	*get_next_line(int fd)
 		readed = read(fd, tmp, BUFFER_SIZE);
 		if (readed == -1)
 		{
-			free (tmp);
-			free (string);
+			free(tmp);
+			free(string);
 			return (0);
 		}
 		tmp[readed] = '\0';

@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:02:27 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/01 16:05:08 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 22:57:25 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (ft_strdup(s1));
 	if (!s1 && !s2)
 		return (NULL);
-	join = malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
+	join = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!join)
 	{
-		free (join);
+		free(join);
 		return (NULL);
 	}
 	while (s1[++i])
@@ -64,7 +64,7 @@ char	*ft_strdup(char *src)
 		return (NULL);
 	while (src[len])
 		len++;
-	depliquer = (char *)malloc(sizeof (char) * (len + 1));
+	depliquer = (char *)malloc(sizeof(char) * (len + 1));
 	if (!depliquer)
 		return (0);
 	while (src[i])
@@ -83,12 +83,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (0);
-	if (start >= (unsigned int) ft_strlen(s))
+	if (start >= (unsigned int)ft_strlen(s))
 		return (ft_strdup(0));
 	i = 0;
 	while (s[start + i] && i < len)
 		i++;
-	sub = (char *)malloc (sizeof(char) * (i + 1));
+	sub = (char *)malloc(sizeof(char) * (i + 1));
 	if (!sub)
 		return (NULL);
 	i = 0;
@@ -118,9 +118,9 @@ char	*check(char **s)
 		{
 			ret = ft_strdup(tmp_s + i + 1);
 			tmp2 = ft_substr(tmp_s, 0, i + 1);
-			free (*s);
+			free(*s);
 			*s = ft_strdup(tmp2);
-			free (tmp2);
+			free(tmp2);
 			return (ret);
 		}
 		i++;

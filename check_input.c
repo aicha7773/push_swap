@@ -6,41 +6,11 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/04 21:57:14 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/06 23:42:26 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	dupp(t_pile *l, int d)
-{
-	if (!l)
-		return (1);
-	while (l)
-	{
-		if (l->data == d)
-			return (0);
-		l = l->next;
-	}
-	return (1);
-}
-
-void	duplicated(t_pile *l)
-{
-	t_pile	*c;
-
-	c = NULL;
-	t_pile *tmp;
-	while (l)
-	{
-		if (!dupp(c, l->data))
-			ft_error();
-		tmp=ft_lstnew(l->data);
-		ft_lstadd_back(&c,tmp);
-		l = l->next;
-		// free(tmp);
-	}
-}
 
 int	no_need(t_pile *l)
 {
@@ -79,8 +49,7 @@ void	check_input(char **f)
 	i = 1;
 	while (f[i])
 	{
-		if (!ft_strcmp(f[i], "2147483647") || !ft_strcmp(f[i],
-				"-2147483648"))
+		if (!ft_strcmp(f[i], "2147483647") || !ft_strcmp(f[i], "-2147483648"))
 			ft_error();
 		ft_atoi(f[i]);
 		i++;
@@ -96,8 +65,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	s = 1;
 	a = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-		|| str[i] == '\r' || str[i] == ' ')
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
