@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:39:53 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/06 22:57:38 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/07 02:26:45 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int c, char **v)
 		t = in_pile(v);
 		duplicated(t);
 		checker(&t);
-		system("leaks checker");
 		ft_free(t);
 	}
 }

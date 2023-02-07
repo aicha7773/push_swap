@@ -6,76 +6,69 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:25:06 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 01:41:04 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/07 02:19:06 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	for_norm(t_pile **l, t_pile **b, int offset, int start, int end,
-		int middle, int *tab)
+typedef struct t_hankss
 {
+	int	size;
+	int	offset;
+	int	start;
+	int	end;
+	int	middle;
 	int	i;
+}		t_hanks;
 
-	i = 0;
-	while (*l && i < 2 * offset)
+void	for_norm(t_pile **l, t_pile **b, int *tab, t_hanks *t)
+{
+	t->i = 0;
+	while (*l && t->i < 2 * t->offset)
 	{
-		if ((*l)->data >= tab[start] && (*l)->data <= tab[end])
+		if ((*l)->data >= tab[t->start] && (*l)->data <= tab[t->end])
 		{
 			which_way(l, b, 0, 'a');
-			if (!*l)
-				break ;
-			if ((*b)->data <= tab[middle])
+			if ((*b)->data <= tab[t->middle])
 			{
 				rot(b);
 				putstr("rb\n");
 			}
-			i++;
+			t->i++;
 		}
 		else
 		{
 			rot(l);
 			putstr("ra\n");
 		}
-		indicer(*l);
-		if (no_need(*l))
-			break ;
 	}
 }
 
 void	main_function(t_pile **l)
 {
-	int		size;
-	int		middle;
-	int		offset;
-	int		start;
-	int		end;
+	t_hanks	t;
 	int		*tab;
 	t_pile	*b;
 
 	b = NULL;
-	size = ft_lstsize(*l);
+	t.size = ft_lstsize(*l);
 	tab = struct_to_tab(*l);
-	trier_tab(tab, size);
-	middle = size / 2;
-	offset = 0;
-	if (size <= 10)
-		offset = size / 5;
-	else if (size <= 150)
-		offset = size / 6;
-	else if (size > 150)
-		offset = size / 15;
-	start = middle - offset;
-	end = middle + offset - 1;
+	t.middle = t.size / 2;
+	t.offset = t.size / 6;
+	if (t.size > 150)
+		t.offset = t.size / 15;
+	t.start = t.middle - t.offset;
+	t.end = t.middle + t.offset - 1;
 	while (*l)
 	{
-		for_norm(l, &b, offset, start, end, middle, tab);
-		start -= offset;
-		end += offset;
-		if (end >= size)
-			end = size - 1;
-		if (start < 0)
-			start = 0;
+		for_norm(l, &b, tab, &t);
+		t.start -= t.offset;
+		t.end += t.offset;
+		if (t.end >= t.size)
+			t.end = t.size - 1;
+		if (t.start < 0)
+			t.start = 0;
 	}
 	please(l, &b);
 	free(tab);
@@ -95,50 +88,48 @@ int	exitt(t_pile *p, int val)
 	return (0);
 }
 
-void	for_norm2(t_pile **b, t_pile **a, int *tab, int i)
+void	for_norm2(t_pile **b, t_pile **a, int *tab, t_hanks t)
 {
-	int	count;
-
-	count = 0;
-	while (i > -1)
+	t.end = 0;
+	while (t.i > -1)
 	{
-		if (count-- > 0 && !exitt(*b, tab[i]))
+		if (t.end-- > 0 && !exitt(*b, tab[t.i]))
 		{
 			rev_rot(a);
 			putstr("rra\n");
-			i--;
+			t.i--;
 			continue ;
 		}
-		if ((*b)->data == tab[i])
+		if ((*b)->data == tab[t.i])
 		{
 			push(b, a);
 			putstr("pa\n");
-			i--;
+			t.i--;
 		}
-		else if (count++ == 0 || (count > 0 && (*b)->data > ft_lstlastint(*a)))
+		else if (t.end++ == 0 || (t.end > 0 && (*b)->data > ft_lstlastint(*a)))
 		{
 			push(b, a);
 			rot(a);
 			putstr("pa\nra\n");
 		}
 		else
-			which_way2(b, pos(*b, tab[i]));
+			which_way2(b, pos(*b, tab[t.i]));
 	}
 }
 
 void	please(t_pile **a, t_pile **b)
 {
-	int size;
-	int *tab;
-	int i;
+	int		size;
+	int		*tab;
+	t_hanks	t;
 
 	size = ft_lstsize(*b);
 	tab = struct_to_tab(*b);
 	trier_tab(tab, size);
-	i = size - 1;
+	t.i = size - 1;
 	while (*b)
 	{
-		for_norm2(b, a, tab, i);
+		for_norm2(b, a, tab, t);
 	}
 	free(tab);
 }
