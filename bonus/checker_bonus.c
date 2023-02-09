@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:25:59 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 02:26:27 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/07 21:31:10 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	checker(t_pile **a)
 		help(a, &b, v);
 		free(v);
 	}
-	ft_free(b);
-	if (no_need(*a))
+	if (no_need(*a) && !b)
 		putstr("OK\n");
 	else
 		putstr("KO\n");
+	ft_free(b);
 }

@@ -6,44 +6,11 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 18:25:06 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 02:19:06 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/08 18:08:53 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-typedef struct t_hankss
-{
-	int	size;
-	int	offset;
-	int	start;
-	int	end;
-	int	middle;
-	int	i;
-}		t_hanks;
-
-void	for_norm(t_pile **l, t_pile **b, int *tab, t_hanks *t)
-{
-	t->i = 0;
-	while (*l && t->i < 2 * t->offset)
-	{
-		if ((*l)->data >= tab[t->start] && (*l)->data <= tab[t->end])
-		{
-			which_way(l, b, 0, 'a');
-			if ((*b)->data <= tab[t->middle])
-			{
-				rot(b);
-				putstr("rb\n");
-			}
-			t->i++;
-		}
-		else
-		{
-			rot(l);
-			putstr("ra\n");
-		}
-	}
-}
 
 void	main_function(t_pile **l)
 {
@@ -88,28 +55,33 @@ int	exitt(t_pile *p, int val)
 	return (0);
 }
 
+void	for_norm3(t_pile **b, t_pile **a, t_hanks *t)
+{
+	push(b, a);
+	putstr("pa\n");
+	t->i--;
+}
+
 void	for_norm2(t_pile **b, t_pile **a, int *tab, t_hanks t)
 {
 	t.end = 0;
 	while (t.i > -1)
 	{
-		if (t.end-- > 0 && !exitt(*b, tab[t.i]))
+		if (t.end > 0 && !exitt(*b, tab[t.i]))
 		{
 			rev_rot(a);
 			putstr("rra\n");
 			t.i--;
+			t.end--;
 			continue ;
 		}
 		if ((*b)->data == tab[t.i])
-		{
-			push(b, a);
-			putstr("pa\n");
-			t.i--;
-		}
-		else if (t.end++ == 0 || (t.end > 0 && (*b)->data > ft_lstlastint(*a)))
+			for_norm3(b, a, &t);
+		else if (t.end == 0 || (t.end > 0 && (*b)->data > ft_lstlastint(*a)))
 		{
 			push(b, a);
 			rot(a);
+			t.end++;
 			putstr("pa\nra\n");
 		}
 		else

@@ -6,11 +6,23 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 18:30:26 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 02:07:10 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/08 21:45:55 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	ft_strlen(char *c)
+{
+	size_t	i;
+
+	i = 0;
+	if (!c)
+		return (0);
+	while (c[i])
+		i++;
+	return (i);
+}
 
 int	*struct_to_tab(t_pile *p)
 {
@@ -35,45 +47,29 @@ int	*struct_to_tab(t_pile *p)
 	return (tab);
 }
 
-void	affichetab(int *tab, int size)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	int	i;
+	char	*sub;
+	size_t	i;
 
+	if (!s)
+		return (0);
+	if (start >= (unsigned int)ft_strlen(s))
+		return (NULL);
 	i = 0;
-	while (i < size)
+	while (s[start + i] && i < len)
+		i++;
+	sub = (char *)malloc(sizeof(char) * (i + 1));
+	if (!sub)
+		return (NULL);
+	i = 0;
+	while (s[i + start] && i < len)
 	{
-		printf("%d\n", tab[i]);
+		sub[i] = s[start + i];
 		i++;
 	}
-}
-
-void	indicer(t_pile *l)
-{
-	int	*tab;
-	int	i;
-	int	size;
-
-	if (!l)
-		return ;
-	size = ft_lstsize(l);
-	tab = struct_to_tab(l);
-	trier_tab(tab, size);
-	i = 0;
-	while (l)
-	{
-		while (i < size)
-		{
-			if (l->data == tab[i])
-			{
-				l->index = i;
-				i = 0;
-				break ;
-			}
-			i++;
-		}
-		l = l->next;
-	}
-	free(tab);
+	sub[i] = 0;
+	return (sub);
 }
 
 void	trier_tab(int *T, int size)

@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:03:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/06 23:42:26 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/08 22:02:35 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,43 @@ void	check_input(char **f)
 	i = 1;
 	while (f[i])
 	{
-		if (!ft_strcmp(f[i], "2147483647") || !ft_strcmp(f[i], "-2147483648"))
-			ft_error();
 		ft_atoi(f[i]);
 		i++;
 	}
 }
 
+void	for_normm(char *s, int *i, int *si)
+{
+	if (s[*i] == '-')
+		*si *= -1;
+	else
+		*si = 1;
+	(*i)++;
+}
+
 int	ft_atoi(char *str)
 {
 	int					i;
-	int					s;
+	int					si;
 	unsigned long long	a;
 
 	i = 0;
-	s = 1;
+	si = 1;
 	a = 0;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			s *= -1;
-		i++;
-	}
+		for_normm(str, &i, &si);
 	if (!(str[i] >= '0' && str[i] <= '9'))
 		ft_error();
-	while (str[i] >= '0' && str[i] <= '9')
+	while ((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '+'
+		|| str[i] == '-')
 	{
-		a = a * 10 + str[i] - '0';
+		if (str[i] >= '0' && str[i] <= '9')
+			a = a * 10 + str[i] - '0';
 		i++;
 	}
-	if (!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0')
+	if ((!(str[i] >= '0' && str[i] <= '9') && str[i] != '\0') || a > 2147483647)
 		ft_error();
-	return (a * s);
+	return (a * si);
 }

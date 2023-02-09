@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 23:26:08 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 00:51:42 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/09 15:44:40 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ typedef struct t_ppile
 	struct t_ppile	*next;
 	int				index;
 }					t_pile;
+
+typedef struct t_hankss
+{
+	int				size;
+	int				offset;
+	int				start;
+	int				end;
+	int				middle;
+	int				i;
+}					t_hanks;
 
 t_pile				*ft_pop(t_pile **stack);
 void				putstr(char *s);
@@ -69,5 +79,9 @@ void				affichetab(int *tab, int size);
 int					ft_lstlastint(t_pile *lst);
 void				which_way2(t_pile **l, int pos);
 void				please(t_pile **a, t_pile **b);
-
+void				for_norm(t_pile **l, t_pile **b, int *tab, t_hanks *t);
+char				**ft_split(char *s, char c);
+char				*ft_substr(char *s, unsigned int start, size_t len);
+size_t				ft_strlen(char *c);
+char				**ft_freee(char **p, int len);
 #endif

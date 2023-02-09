@@ -6,7 +6,7 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:00:01 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/07 01:19:46 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/09 15:55:30 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	push_swap(int c, char **v)
 	check_input(v);
 	t = in_pile(v);
 	duplicated(t);
+	c = ft_lstsize (t) + 1;
 	if (no_need(t))
 		return ;
 	if (c == 3 && t->data > t->next->data)

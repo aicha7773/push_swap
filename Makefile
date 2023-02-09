@@ -6,7 +6,7 @@
 #    By: aatki <aatki@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/03 17:33:49 by aatki             #+#    #+#              #
-#    Updated: 2023/02/07 01:01:08 by aatki            ###   ########.fr        #
+#    Updated: 2023/02/08 20:48:22 by aatki            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = check_input.c\
 	an_other_other_try.c\
 	which_way2.c\
 	swap_functions_utils.c\
-	libft_utils.c
+	libft_utils.c\
+	ft_split.c
 
 SRCB= ./bonus/main.c\
 		./bonus/checker_bonus.c\

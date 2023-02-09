@@ -6,23 +6,11 @@
 /*   By: aatki <aatki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:02:27 by aatki             #+#    #+#             */
-/*   Updated: 2023/02/06 22:57:25 by aatki            ###   ########.fr       */
+/*   Updated: 2023/02/08 21:03:23 by aatki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-size_t	ft_strlen(char *c)
-{
-	size_t	i;
-
-	i = 0;
-	if (!c)
-		return (0);
-	while (c[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -74,31 +62,6 @@ char	*ft_strdup(char *src)
 	}
 	depliquer[i] = '\0';
 	return (depliquer);
-}
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
-{
-	char	*sub;
-	size_t	i;
-
-	if (!s)
-		return (0);
-	if (start >= (unsigned int)ft_strlen(s))
-		return (ft_strdup(0));
-	i = 0;
-	while (s[start + i] && i < len)
-		i++;
-	sub = (char *)malloc(sizeof(char) * (i + 1));
-	if (!sub)
-		return (NULL);
-	i = 0;
-	while (s[i + start] && i < len)
-	{
-		sub[i] = s[start + i];
-		i++;
-	}
-	sub[i] = 0;
-	return (sub);
 }
 
 char	*check(char **s)
